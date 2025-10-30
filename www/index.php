@@ -141,6 +141,39 @@
             </div>
         <?php endif; ?>
 
+<?php
+require_once 'db.php';
+
+// Получаем все записи из БД
+try {
+    $stmt = $pdo->query("SELECT * FROM excursions ORDER BY created_at DESC");
+    $all_excursions = $stmt->fetchAll();
+} catch(PDOException $e) {
+    $all_excursions = [];
+    echo "<p style='color: red;'>Ошибка загрузки данных: " . $e->getMessage() . "</p>";
+}
+?>
+
+<div style="margin-top: 40px;">
+    <h2>Все записи на экскурсии:</h2>
+    
+    <?php if(!empty($all_excursions)): ?>
+        <div style="border: 1px solid #ccc; padding: 15px; border-radius: 5px; background: #f9f9f9;">
+            <?php foreach($all_excursions as $row): ?>
+                <div style="padding: 10px; border-bottom: 1px solid #eee;">
+                    <strong><?= htmlspecialchars($row['name']) ?></strong><br>
+                    Дата: <?= $row['excursion_date'] ?> | 
+                    Маршрут: <?= htmlspecialchars($row['route']) ?> | 
+                    Аудиогид: <?= $row['audio_guide'] === 'yes' ? 'Да' : 'Нет' ?> | 
+                    Язык: <?= htmlspecialchars($row['language']) ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php else: ?>
+        <p>Записей на экскурсии пока нет.</p>
+    <?php endif; ?>
+</div>
+
         <!-- Текущее время (как было в старом файле) -->
         <p style="margin-top: 30px; color: #666;">Текущее время: <span id="time"></span></p>
     </div>
