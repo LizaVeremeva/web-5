@@ -1,0 +1,71 @@
+<!DOCTYPE html> 
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запись на экскурсию</title>
+</head>
+<body>
+    <h1>Запись на экскурсию</h1>
+    
+    <form id="excursionForm" action="process.php" method="POST">
+        <!-- Имя -->
+        <div>
+            <label for="name">Ваше имя:</label>
+            <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
+        </div>
+
+        <!-- Дата экскурсии -->
+        <div>
+            <label for="date">Дата экскурсии:</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+
+        <!-- Маршрут -->
+        <div>
+            <label for="route">Маршрут экскурсии:</label>
+            <select id="route" name="route" required>
+                <option value="">-- Выберите маршрут --</option>
+                <option value="historic">Рыбная деревня</option>
+                <option value="museum">Амалиенау</option>
+                <option value="parks">Подземелья и оборонительные валы</option>
+                <option value="architecture">Куршкая коса</option>
+            </select>
+        </div>
+
+        <!-- Аудиогид -->
+        <div>
+            <label>
+                <input type="checkbox" name="audio_guide" value="yes">
+                Нужен аудиогид (платно)
+            </label>
+        </div>
+
+        <!--  Язык экскурсии -->
+        <div>
+            <label>Язык экскурсии:</label><br>
+            <label>
+                <input type="radio" name="language" value="russian" required>
+                Русский
+            </label><br>
+            <label>
+                <input type="radio" name="language" value="english">
+                Английский
+            </label><br>
+            <label>
+                <input type="radio" name="language" value="german">
+                Немецкий
+            </label>
+        </div>
+
+        <!-- Кнопка отправки -->
+        <button type="submit">Записаться на экскурсию</button>
+    </form>
+
+    <!-- Блок для вывода результатов -->
+    <div id="result"></div>
+
+    <!-- Подключаем JS -->
+    <script src="form.js"></script>
+</body>
+</html>

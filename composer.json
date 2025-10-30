@@ -1,0 +1,15 @@
+{
+    "name": "lizaveremeva/web-4",
+    "description": "Lab 4 - Composer and API integration",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Veremyeva",
+            "email": "veremyeva@bk.ru"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.10"
+    }
+}
